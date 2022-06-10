@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>clicker-game</title>
+</head>
+<body>
+    <button id="darkmode">Dark Mode</button>
+    <h1>clicker game</h1>
+    <div class="stats">
+        <p>clickers: <span id="clickers">0</span></p>
+        <p>idle: $<span id="idle">0</span> / sec</p>
+        <p>balance: $<span id="bal">0</span></p>
+    </div>
+    <div id="clickme">
+        <div class="plus">+1</div>
+    </div>
+    <div id="upgrades">
+        <div class="upgrade">
+            <h2>click power</h2>
+            <span id="value1">1</span>
+            <button class="btn-upgrade" id="click-power">upgrade ($<span class="price">50</span>)</button>
+        </div>
+        <div class="upgrade">
+            <h2>multiplier</h2>
+            <span id="value2">1.0x</span>
+            <button class="btn-upgrade" id="multiplier">upgrade</button>
+        </div>
+        <div class="upgrade">
+            <h2>autoclick</h2>
+            <span id="value3">+0</span>
+            <button class="btn-upgrade" id="autoclick">upgrade</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

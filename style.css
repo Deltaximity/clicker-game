@@ -1,0 +1,99 @@
+:root {
+    --bg-color: #fff;
+    --primary: #5f5;
+    --secondary: #5d5;
+    --bg-accent: #eee;
+    --txt-color: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: .2s;
+}
+
+body {
+    width: 80%;
+    margin: 0 auto;
+    font-family: monospace;
+    background-color: var(--bg-color);
+}
+
+h1, h2, p, span, button, div {
+    color: var(--txt-color);
+}
+
+button {
+    background: none;
+    background-color: var(--bg-accent);
+    border: 1px solid var(--txt-color);
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--txt-color);
+    color: var(--bg-color);
+}
+
+button:hover span {
+    color: var(--bg-color);
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+#darkmode {
+    position: absolute;
+    left: 0;
+    top: 85%;
+    width: 80px;
+    padding: 5px;
+    transform: translate(-35%) rotate(90deg);
+}
+
+#clickme {
+    width: 200px;
+    height: 200px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    transition: .1s;
+    margin: 80px auto;
+    position: relative;
+}
+
+#clickme:hover {
+    cursor: pointer;
+    background-color: var(--secondary);
+}
+
+#clickme:active {
+    transform: scale(0.95);
+}
+
+.plus {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    /* display: none; */
+    animation: pop 1s forwards;
+}
+
+.upgrade {
+    background-color: var(--bg-accent);
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-upgrade {
+    padding: 8px 10px;
+}
+
+@keyframes pop {
+    100% {transform: translate(-50%, -300%); opacity: 0;}
+}
