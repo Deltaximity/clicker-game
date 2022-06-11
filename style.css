@@ -17,6 +17,7 @@ body {
     margin: 0 auto;
     font-family: monospace;
     background-color: var(--bg-color);
+    user-select: none;
 }
 
 h1, h2, p, span, button, div {
@@ -56,6 +57,9 @@ h1 {
 #clickme {
     width: 200px;
     height: 200px;
+    /* background-image: url(./gigachad.jpeg); */
+    background-size: cover;
+    background-position: center;
     background-color: var(--primary);
     border-radius: 50%;
     transition: .1s;
@@ -77,8 +81,8 @@ h1 {
     top: 0;
     left: 50%;
     transform: translate(-50%);
-    /* display: none; */
     animation: pop 1s forwards;
+    font-size: 1.5rem;
 }
 
 .upgrade {
@@ -95,5 +99,5 @@ h1 {
 }
 
 @keyframes pop {
-    100% {transform: translate(-50%, -300%); opacity: 0;}
+    to {transform: translate(-50%, -300%); opacity: 0; display: none;}
 }
