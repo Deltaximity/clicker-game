@@ -104,7 +104,7 @@ function updateValues() {
     idleRef.textContent = oGameData.idleIncome;
     valueCP.textContent = oGameData.clickPower;
     valueM.textContent = Math.round(oGameData.multiplier * 10) / 10 + "x";
-    valueII.textContent = oGameData.idleIncome + " / min";
+    valueII.textContent = oGameData.idleIncome + " / sec";
     valueAC.textContent = "+" + oGameData.autoClick;
     valueACP.textContent = oGameData.autoClickPower;
 }

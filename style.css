@@ -57,7 +57,7 @@ h1 {
 #clickme {
     width: 200px;
     height: 200px;
-    /* background-image: url(./gigachad.jpeg); */
+    background-image: url(./gigachad.jpeg);
     background-size: cover;
     background-position: center;
     background-color: var(--primary);
