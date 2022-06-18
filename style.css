@@ -26,6 +26,7 @@ h1, h2, p, span, button, div {
 
 button {
     background: none;
+    font-family: monospace;
     background-color: var(--bg-accent);
     border: 1px solid var(--txt-color);
 }
@@ -49,7 +50,6 @@ h1 {
     position: absolute;
     left: 0;
     top: 85%;
-    width: 80px;
     padding: 5px;
     transform: translate(-35%) rotate(90deg);
 }
