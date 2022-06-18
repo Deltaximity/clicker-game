@@ -3,14 +3,15 @@
 let oGameData = {
     playerBalance: 0,
     idleIncome: 0,
-    clickPower: 1,
-    multiplier: 1.0,
+    clickPower: 10,
+    multiplier: 1,
     autoClick: 0,
     autoClickPower: 0,
     bonusChance: 0,
     incomeOverTime() {
-        let income = Math.round((this.idleIncome * this.multiplier) * 10) / 10;
+        let income = Math.round(this.idleIncome * this.multiplier);
         this.playerBalance += income;
+        animateIncome(income);
     }
 };
 
@@ -33,7 +34,7 @@ let valueBC = document.querySelector('#value6');
 
 let btnCP = document.querySelector('#click-power');
 let btnM = document.querySelector('#multiplier');
-let btnII = document.querySelector('idle-income');
+let btnII = document.querySelector('#idle-income');
 let btnAC = document.querySelector('#autoclick');
 
 updateValues();
@@ -59,35 +60,50 @@ darkMode.addEventListener('click', () => {
 window.addEventListener('load', () => {
     setInterval(() => {
         oGameData.incomeOverTime();
-        balRef.textContent = Math.round(oGameData.playerBalance * 10) / 10;
+        balRef.textContent = oGameData.playerBalance;
     }, 1000);
 });
 
 // clickme
 coin.addEventListener('mousedown', () => {
-    let income = Math.round((oGameData.clickPower * oGameData.multiplier) * 10) / 10;
-    oGameData.playerBalance += Math.round(income * 10) / 10;
-    balRef.textContent = Math.round(oGameData.playerBalance * 10) / 10;
+    let income = oGameData.clickPower * oGameData.multiplier;
+    oGameData.playerBalance += income;
+    balRef.textContent = oGameData.playerBalance;
     animateIncome(income);
 });
 
 // click power
-btnCP.addEventListener('click', (e) => {
-    oGameData.clickPower++;
-    updateValues();
+btnCP.addEventListener('click', () => {
+    let order = 0, multiplier = 1.1;
+    if (getCost(order) <= oGameData.playerBalance) {
+        oGameData.playerBalance -= getCost(order);
+        oGameData.clickPower++;
+        updateCost(order, multiplier);
+        updateValues();
+    }
 });
 
 // multiplier 
 btnM.addEventListener('click', () => {
-    oGameData.multiplier += 0.1;
-    updateValues();
+    let order = 1, multiplier = 1.2;
+    if (getCost(order) <= oGameData.playerBalance) {
+        oGameData.playerBalance -= getCost(order);
+        oGameData.multiplier++;
+        updateCost(order, multiplier)
+        updateValues();
+    }
 });
 
 // idle income
-// btnII.addEventListener('click', () => {
-//     oGameData.idleIncome++;
-//     updateValues();
-// })
+btnII.addEventListener('click', () => {
+    let order = 2, multiplier = 1.5;
+    if (getCost(order) <= oGameData.playerBalance) {
+        oGameData.playerBalance -= getCost(order);
+        oGameData.idleIncome += 10;
+        updateCost(order, multiplier);
+        updateValues();
+    }
+})
 
 function animateIncome(income) {
     let plusDiv = document.createElement('div');
@@ -102,9 +118,22 @@ function animateIncome(income) {
 
 function updateValues() {
     idleRef.textContent = oGameData.idleIncome;
+    balRef.textContent = oGameData.playerBalance;
     valueCP.textContent = oGameData.clickPower;
-    valueM.textContent = Math.round(oGameData.multiplier * 10) / 10 + "x";
+    valueM.textContent = oGameData.multiplier + "x";
     valueII.textContent = oGameData.idleIncome + " / sec";
     valueAC.textContent = "+" + oGameData.autoClick;
     valueACP.textContent = oGameData.autoClickPower;
+}
+
+function getCost(count) {
+    let upgradeCost = upgradeRef[count].getAttribute('data-price');
+    return upgradeCost;
+}
+
+function updateCost(count, multiplier) {
+    let newPrice = getCost(count) * multiplier;
+    upgradeRef[count].setAttribute('data-price', Math.round(newPrice));
+    upgradeRef[count].textContent = Math.round(newPrice);
+    console.log(newPrice);
 }
