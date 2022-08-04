@@ -117,7 +117,7 @@ function animateIncome(income) {
 }
 
 function updateValues() {
-    idleRef.textContent = oGameData.idleIncome;
+    idleRef.textContent = Math.round(oGameData.idleIncome * oGameData.multiplier);
     balRef.textContent = oGameData.playerBalance;
     valueCP.textContent = oGameData.clickPower;
     valueM.textContent = oGameData.multiplier + "x";
