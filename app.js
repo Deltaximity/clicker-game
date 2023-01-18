@@ -23,6 +23,7 @@ let root = document.querySelector(':root');
 let plusRef = document.querySelector('.plus');
 let balRef = document.querySelector('#bal');
 let idleRef = document.querySelector('#idle');
+let upgradeBtn = document.querySelectorAll('.btn-upgrade');
 let upgradeRef = document.querySelectorAll('.price');
 
 let valueCP = document.querySelector('#value1');
@@ -103,7 +104,7 @@ btnII.addEventListener('click', () => {
         updateCost(order, multiplier);
         updateValues();
     }
-})
+});
 
 function animateIncome(income) {
     let plusDiv = document.createElement('div');
